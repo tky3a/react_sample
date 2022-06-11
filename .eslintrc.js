@@ -49,5 +49,8 @@ module.exports = {
         unnamedComponents: 'function-expression',
       },
     ],
+
+    // console
+    'no-console': 'off',
   },
 };
