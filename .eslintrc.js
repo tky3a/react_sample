@@ -40,5 +40,14 @@ module.exports = {
     semi: [1, 'always'],
     'space-unary-ops': 2,
 
+    // function
+    'react/function-component-definition': [
+      2,
+      // アロー関数を使う
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'function-expression',
+      },
+    ],
   },
 };
