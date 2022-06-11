@@ -1,3 +1,62 @@
+# react18.1.0のサンプルアプリ
+
+# バージョン
+
+コマンド：npm list --depth=0 
+```
+├── @testing-library/jest-dom@5.16.4
+├── @testing-library/react@13.3.0
+├── @testing-library/user-event@13.5.0
+├── react-dom@18.1.0
+├── react-scripts@5.0.1
+├── react@18.1.0
+└── web-vitals@2.1.4
+```
+
+# ESLintの初期設定
+公式:https://eslint.org/docs/user-guide/getting-started
+以下の手順で
+
+### グローバルではなく、開発環境にインストール
+```
+yarn add eslint --dev
+```
+
+### 校正ファイルを作成
+```
+yarn create @eslint/config
+```
+
+初期値は以下内容で設定。(必要に応じてeslintrc.jsを修正する)
+```
+・To check syntax, find problems, and enforce code style
+✔ What type of modules does your project use? · esm
+✔ Which framework does your project use? · react
+✔ Does your project use TypeScript? · No / Yes
+✔ Where does your code run? · browser
+✔ How would you like to define a style for your project? · guide
+✔ Which style guide do you want to follow? · airbnb
+✔ What format do you want your config file to be in? · JavaScript
+eslint-plugin-react@^7.28.0 eslint-config-airbnb@latest eslint@^7.32.0 || ^8.2.0 eslint-plugin-import@^2.25.3 eslint-plugin-jsx-a11y@^6.5.1 eslint-plugin-react-hooks@^4.3.0
+✔ Would you like to install them now? · No / Yes
+✔ Which package manager do you want to use? · yarn
+```
+
+# vscodeプラグイン
+```
+https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag
+
+https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+
+https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets
+
+https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets
+ // ※JavaScript(ES7)やReact、Reduxのスニペット。
+ // 例えば、下記の動画のようにrafceと打つとconstとアロー関数で宣言した関数コンポーネントの雛形を一瞬で作成してくれます。しかも、ファイル名がそのままコンポーネント名になります。もちろん他のバリュエーションも豊富です。
+```
+
+ーーーーーーーーーーーーーー以下デフォルトの記載ーーーーーーーーーーーーーーーーーーーーーー
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,55 +127,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-ーーーーーーーーーーーーーー以下追記ーーーーーーーーーーーーーーーーーーーーーーーー
-
-# バージョン
-
-コマンド：npm list --depth=0 
-├── @testing-library/jest-dom@5.16.4
-├── @testing-library/react@13.3.0
-├── @testing-library/user-event@13.5.0
-├── react-dom@18.1.0
-├── react-scripts@5.0.1
-├── react@18.1.0
-└── web-vitals@2.1.4
-
-# ESLintの初期設定
-公式:https://eslint.org/docs/user-guide/getting-started
-以下の手順で
-
-### グローバルではなく、開発環境にインストール
-yarn add eslint --dev
-
-### 校正ファイルを作成
-yarn create @eslint/config
-
-初期値は以下内容で設定。(必要に応じてeslintrc.jsを修正する)
-```
-・To check syntax, find problems, and enforce code style
-✔ What type of modules does your project use? · esm
-✔ Which framework does your project use? · react
-✔ Does your project use TypeScript? · No / Yes
-✔ Where does your code run? · browser
-✔ How would you like to define a style for your project? · guide
-✔ Which style guide do you want to follow? · airbnb
-✔ What format do you want your config file to be in? · JavaScript
-eslint-plugin-react@^7.28.0 eslint-config-airbnb@latest eslint@^7.32.0 || ^8.2.0 eslint-plugin-import@^2.25.3 eslint-plugin-jsx-a11y@^6.5.1 eslint-plugin-react-hooks@^4.3.0
-✔ Would you like to install them now? · No / Yes
-✔ Which package manager do you want to use? · yarn
-```
-
-# vscodeプラグイン
-```
-https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag
-
-https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-
-https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets
-
-https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets
- // ※JavaScript(ES7)やReact、Reduxのスニペット。
- // 例えば、下記の動画のようにrafceと打つとconstとアロー関数で宣言した関数コンポーネントの雛形を一瞬で作成してくれます。しかも、ファイル名がそのままコンポーネント名になります。もちろん他のバリュエーションも豊富です。
- ```
-
