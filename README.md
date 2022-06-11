@@ -42,6 +42,12 @@ eslint-plugin-react@^7.28.0 eslint-config-airbnb@latest eslint@^7.32.0 || ^8.2.0
 ✔ Which package manager do you want to use? · yarn
 ```
 
+# css
+```
+styled-componentsを使う
+https://tech-blog.rakus.co.jp/entry/20210319/frontend
+```
+
 # vscodeプラグイン
 ```
 https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag
