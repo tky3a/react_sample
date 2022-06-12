@@ -1,7 +1,8 @@
+// import { useEffect, useState } from 'react';
 import {
   BrowserRouter, Routes, Route,
 } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import AuthGuarde from '../components/AuthGuarde';
 import Login from '../pages/login';
 import Top from '../pages/top';
@@ -9,19 +10,16 @@ import NotFound from '../pages/notFound';
 
 // URLを設定
 const Routers = () => {
-  // const token = useSelector((state) => state.logins.loginToken);
   // ローカルストレージからキーを指定して取得
-  const token = localStorage.getItem('loginToken');
-  console.log('routerでtokenは取得できてないのか？', token);
+  const localStrageToken = localStorage.getItem('loginToken'); // ログイン状態の維持の判定用
+  const token = useSelector((state) => state.logins.loginToken); // 初回ログイン時の判定用
 
   // ログイン済みかを判定
   const loginCheck = () => {
-    console.log('>??????/', token);
-    if (!token) {
-      console.log('ここにはきてないよね？');
-      return false;
+    if (token || localStrageToken) {
+      return true;
     }
-    return true;
+    return false;
   };
 
   return (

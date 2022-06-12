@@ -1,5 +1,13 @@
+import PageBody from '../../components/PageBody';
+import Header from '../../components/Header';
+
 const Top = () => (
-  <h2>TOPページ</h2>
+  <>
+    <Header />
+    <PageBody>
+      <h2>TOPページ</h2>
+    </PageBody>
+  </>
 );
 
 export default Top;

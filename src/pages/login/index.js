@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import {
@@ -19,7 +19,14 @@ const Login = () => {
   const [userPassword, setUserPassword] = useState('');
   const [userPasswordMessage, setUserPasswordMessage] = useState('');
   const [isLogin, setIsLogin] = useState(false);
-  const token = useSelector((state) => state.logins.loginToken);
+
+  // style
+  const styles = {
+    buttonCenter: {
+      justifyContent: 'center',
+      display: 'flex',
+    },
+  };
 
   // inputの入力値を取得
   const handleChange = (e) => {
@@ -41,10 +48,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isLogin) {
-      console.log('tokenがセットされました.ここでトップに遷移');
-      console.log('ここで取得できてないからか？？？', localStorage.getItem('loginToken'));
       navigate('/', { replace: true });
-      console.log('------------------------');
     }
   }, [navigate, isLogin]);
 
@@ -52,10 +56,9 @@ const Login = () => {
   const loginCheck = () => {
     // ログイン成功
     if (userId && userPassword) {
-      console.log('tokenがセットされていないはず', token);
       dispatch(setToken('token'));
       setIsLogin(true);
-      // ローカルストレージで持ってないとリロードで消える
+      // reduxではリロードで消えるため、ログインの維持にはローカルストレージで保持
       localStorage.setItem('loginToken', 'token');
     }
 
@@ -81,7 +84,7 @@ const Login = () => {
         <Input value={userPassword} onChange={handleChange} name="userPassword" type="password" />
         <Message>{userPasswordMessage}</Message>
       </FormGroup>
-      <div>
+      <div style={styles.buttonCenter}>
         <Button color="blue" onClick={() => loginCheck()}>ログイン</Button>
       </div>
     </PageBody>
