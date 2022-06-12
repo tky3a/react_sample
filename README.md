@@ -42,10 +42,17 @@ eslint-plugin-react@^7.28.0 eslint-config-airbnb@latest eslint@^7.32.0 || ^8.2.0
 ✔ Which package manager do you want to use? · yarn
 ```
 
-# css
+# cssの構成
 ```
 styled-componentsを使う
 https://tech-blog.rakus.co.jp/entry/20210319/frontend
+```
+
+# reduxの構成
+redux-toolkitとreact-reduxをインストール
+```
+ yarn add @reduxjs/toolkit
+ yarn add react-redux
 ```
 
 # vscodeプラグイン
