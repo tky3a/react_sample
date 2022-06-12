@@ -1,6 +1,6 @@
 import './App.css';
 import { Provider } from 'react-redux';
-import Routers from './router/Index';
+import Routers from './router/index';
 import store from './redux/store';
 
 const App = () => (

@@ -54,6 +54,7 @@ module.exports = {
     // console
     'no-console': 'off',
     'no-param-reassign': ['error', { props: false }],
+    'no-tabs': 0,
 
     // hooks
     'react-hooks/rules-of-hooks': 'error', // フックのルールをチェック

@@ -1,13 +1,108 @@
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
+import {
+  Label, FormGroup, Input, Message,
+} from '../../components/forms';
+import PageBody from '../../components/PageBody';
+import { setToken } from '../../redux/login/loginSlice';
+
+// import { pc, sp, tab } from '../../media';
 
 // TODO: reduxとカスタムフック
-const Login = () => (
-  <>
-    <h2>Login Page</h2>
-    <div>
-      <Button color="blue" onClick={() => { console.log(11234); }}>ログイン</Button>
-    </div>
-  </>
-);
+const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [userId, setUserId] = useState('');
+  const [userIdMessage, setUserIdMessage] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const [userPasswordMessage, setUserPasswordMessage] = useState('');
+  const [isLogin, setIsLogin] = useState(false);
+  const token = useSelector((state) => state.logins.loginToken);
+
+  // inputの入力値を取得
+  const handleChange = (e) => {
+    console.log('event', e);
+    if (e.target.name === 'userId') {
+      setUserId(() => e.target.value);
+      // 入力されたらメッセージ初期化
+      if (e.target.value.length >= 1) {
+        setUserIdMessage('');
+      }
+    } else {
+      setUserPassword(() => e.target.value);
+      // 入力されたらメッセージ初期化
+      if (e.target.value.length >= 1) {
+        setUserPasswordMessage('');
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (isLogin) {
+      console.log('tokenがセットされました.ここでトップに遷移');
+      console.log('ここで取得できてないからか？？？', localStorage.getItem('loginToken'));
+      navigate('/', { replace: true });
+      console.log('------------------------');
+    }
+  }, [navigate, isLogin]);
+
+  // 入力値チェック
+  const loginCheck = () => {
+    // ログイン成功
+    if (userId && userPassword) {
+      console.log('tokenがセットされていないはず', token);
+      dispatch(setToken('token'));
+      setIsLogin(true);
+      // ローカルストレージで持ってないとリロードで消える
+      localStorage.setItem('loginToken', 'token');
+    }
+
+    // ログイン失敗
+    if (!userId) {
+      setUserIdMessage('ユーザーIDを入力してください。');
+    }
+    if (!userPassword) {
+      setUserPasswordMessage('パスワードを入力してください。');
+    }
+  };
+
+  return (
+    <PageBody>
+      <h2>Login Page</h2>
+      <FormGroup>
+        <Label>ユーザーID</Label>
+        <Input value={userId} onChange={handleChange} name="userId" type="text" />
+        <Message>{userIdMessage}</Message>
+      </FormGroup>
+      <FormGroup>
+        <Label>パスワード</Label>
+        <Input value={userPassword} onChange={handleChange} name="userPassword" type="password" />
+        <Message>{userPasswordMessage}</Message>
+      </FormGroup>
+      <div>
+        <Button color="blue" onClick={() => loginCheck()}>ログイン</Button>
+      </div>
+    </PageBody>
+  );
+};
+
+// レスポンシブにする方法
+// const Box = styled.div`
+//     background-color: red;
+//     ${sp`
+//         width: 20px;
+//         height: 20px;
+//     `}
+//     ${tab`
+//         width: 50px;
+//         height: 50px;
+//     `}
+//     ${pc`
+//         width: 100px;
+//         height: 100px;
+//     `}
+// `;
 
 export default Login;
