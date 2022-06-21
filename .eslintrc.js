@@ -59,5 +59,7 @@ module.exports = {
     // hooks
     'react-hooks/rules-of-hooks': 'error', // フックのルールをチェック
     'react-hooks/exhaustive-deps': 'warn', // useEffectの依存関係をチェック（依存関係を無視したい場合はeslint-disable-next-line react-hooks/exhaustive-depsコメントで回避する）
+
+    'jsx-a11y/anchor-is-valid': ['error', { components: ['Link'], specialLink: ['to'] }],
   },
 };

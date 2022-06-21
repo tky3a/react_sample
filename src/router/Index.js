@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import AuthGuarde from '../components/AuthGuarde';
 import Login from '../pages/login';
 import Top from '../pages/top';
+import ChatDetail from '../pages/chatDetail';
 import NotFound from '../pages/notFound';
 
 // URLを設定
@@ -27,6 +28,7 @@ const Routers = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={loginCheck() ? <Top /> : <AuthGuarde />} />
+        <Route path="/" element={loginCheck() ? <ChatDetail /> : <AuthGuarde />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

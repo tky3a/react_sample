@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setToken } from '../redux/login/loginSlice';
+import { useHeader } from '../hooks/useHeader';
 // import { pc, sp, tab } from '../../media';
 
 // 画面の一番外側のdiv
@@ -31,9 +32,9 @@ const styles = {
 };
 
 const Header = () => {
-  console.log('header');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { onClickTitle } = useHeader();
 
   // ログアウト処理
   const onClickLogout = () => {
@@ -46,7 +47,14 @@ const Header = () => {
 
   return (
     <HeaderArea>
-      <h2 style={styles.title}>React Sample</h2>
+      <div
+        onClick={() => { onClickTitle({ }); }}
+        onKeyPress={() => { onClickTitle({ }); }}
+        role="button"
+        tabIndex={0}
+      >
+        <h2 style={styles.title}>React Sample</h2>
+      </div>
       <div style={styles.logout}>
         <LogoutLink style={{ textDecoration: 'none' }} to="#" onClick={() => onClickLogout()}>
           ログアウト
