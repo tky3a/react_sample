@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +8,7 @@ import {
 } from '../../components/forms';
 import PageBody from '../../components/PageBody';
 import { setToken } from '../../redux/login/loginSlice';
+import { loginApi } from '../../redux/login/loginSaga';
 
 // import { pc, sp, tab } from '../../media';
 
@@ -54,12 +56,15 @@ const Login = () => {
 
   // 入力値チェック
   const loginCheck = () => {
-    // ログイン成功
+    // ログイン成功(とりあえず入力があったらログインにしている)
     if (userId && userPassword) {
-      dispatch(setToken('token'));
-      setIsLogin(true);
-      // reduxではリロードで消えるため、ログインの維持にはローカルストレージで保持
-      localStorage.setItem('loginToken', 'token');
+      // dispatch(setToken('token'));
+      // setIsLogin(true);
+      // // reduxではリロードで消えるため、ログインの維持にはローカルストレージで保持
+      // localStorage.setItem('loginToken', 'token');
+      console.log('kore>?>');
+      // sagaを呼び出す
+      dispatch(loginApi({ mail: 'trst@aaa.com', password: 'password' }));
     }
 
     // ログイン失敗
